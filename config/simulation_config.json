@@ -1,0 +1,68 @@
+{
+	"experiment_name": "2pools_20w_10_diff_final_balance_medium",
+	"txsPath": ["./src/data/19000000to19249999_BlockTransaction.csv",
+				"./src/data/19250000to19499999_BlockTransaction.csv",
+				"./src/data/19500000to19749999_BlockTransaction.csv",
+				"./src/data/19750000to19999999_BlockTransaction.csv"],
+	"dataPath": "./src/data",
+	"raw_data_path": "./src/data/raw_data",
+	"brokerBalancePath": "./config/brokerBalance_medium_balanced.txt",
+	"processed_data_path": "./src/data/processed_data",
+	"txsPerChunk": 10000000,
+	"txsPerEpoch": 200000,
+	"shardNum": 64,
+	"limit_time": 3,
+	"Balance_accumulation": false,
+  "liquiditypools": [
+	{
+      "id": "LiquidityPool1",
+      "initial_funds": 1e18,
+		"optimizer": {
+			"type": "manage",
+			"params": {
+			  "id":"LiquidityPool1",
+			  "initial_funds": 1e18,
+			  "initial_tax_rate": 0.15,
+			  "min_tax_rate": 0.001,
+			  "max_tax_rate": 0.99,
+			  "learning_rate": 0.1,
+			  "memory_size": 5,
+			  "min_data_points": 5
+			}
+		  }
+    },
+    {
+      "id": "LiquidityPool2",
+      "initial_funds": 1e18,
+		"optimizer": {
+			"type": "manage",
+			"params": {
+			  "id":"LiquidityPool2",
+			  "initial_funds": 1e18,
+			  "initial_tax_rate": 0.15,
+			  "min_tax_rate": 0.001,
+			  "max_tax_rate": 0.99,
+			  "learning_rate": 0.1,
+			  "memory_size": 5,
+			  "min_data_points": 5
+			}
+		  }
+    }
+  ],
+  "volunteerRiskToleranceRange": [0.3, 0.7],
+  "simulation": {
+    "num_epochs": 10,
+    "use_same_data": false
+  },
+  "output": {
+    "outputPath": "./result/output",
+    "logPath": "./result/logs",
+	"console_output": false
+  },
+  "b2e": {
+    "alpha": 1,
+    "iterNum": 300,
+    "varType": "LINEAR",
+    "feeRatio": 0.1
+  }
+}
