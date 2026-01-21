@@ -239,4 +239,5 @@ class DataPreprocessor:
         with open(os.path.join(epoch_dir, "Ctx.csv"), "w") as f:
             f.write("id,Tx sour.shard,Tx dest.shard,Fee,Value,Ratio\n")
             for index, ctx in enumerate(epoch_data['ctxs']):
+
                 f.write(f"{index},{ctx[1]},{ctx[2]},{ctx[0][-1]},{ctx[0][-2]},{ctx[0][-1]/ctx[0][-2]}\n")
